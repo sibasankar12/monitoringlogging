@@ -1,4 +1,3 @@
-```markdown
 # Implementing Monitoring with Prometheus: A Comprehensive Guide
 
 ## Table of Contents
