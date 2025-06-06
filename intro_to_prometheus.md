@@ -171,4 +171,3 @@ Prometheus provides a robust framework for monitoring modern infrastructure. By 
 - Explore [Prometheus Documentation](https://prometheus.io/docs/).  
 - Experiment with custom exporters for niche use cases.  
 - Integrate with Grafana for visualization.
-``` 
