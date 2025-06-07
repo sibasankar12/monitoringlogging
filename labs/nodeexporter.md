@@ -24,18 +24,18 @@ By the end of this lab, you will be able to:
 
 1. Download the latest Node Exporter binary:
 ```bash
-wget https://github.com/prometheus/node_exporter/releases/download/v1.8.2/node_exporter-1.8.2.linux-amd64.tar.gz
+wget https://github.com/prometheus/node_exporter/releases/download/v1.8.2/node_exporter-1.8.2.linux-arm64.tar.gz
 ```
 
 2. Extract the package:
 ```bash
-tar xvfz node_exporter-*.linux-amd64.tar.gz
+tar xvfz node_exporter-*.linux-arm64.tar.gz
 ```
 
 3. Organize files and clean up:
 ```bash
 mkdir node_exporter
-mv node_exporter-*.linux-amd64/* node_exporter/
+mv node_exporter-*.linux-arm64/* node_exporter/
 rm node_exporter-*.tar.gz
 ```
 
