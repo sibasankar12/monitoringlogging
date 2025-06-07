@@ -134,4 +134,3 @@ For production setups, consider:
 🔹 Adding Alertmanager (`alertmanager.service`)  
 🔹 Setting up persistent storage (EBS volumes)  
 
-Let me know if you need further optimizations! 🚀
