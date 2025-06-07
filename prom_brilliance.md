@@ -1,7 +1,8 @@
 
 # Unveiling the Architectural Brilliance of Prometheus
 
-![Prometheus Architecture](https://miro.medium.com/v2/resize:fit:1400/1*JpY2PJRDGQ9pIDJ81Gy8-Q.png)
+![image](https://github.com/user-attachments/assets/4efe04d5-ca5a-49e2-b0b6-2f77456afa3e)
+
 
 Prometheus, the open-source monitoring and alerting toolkit, has become a cornerstone in the observability landscape. Its architecture is ingeniously designed to handle modern cloud-native environments with efficiency and reliability. Let's dive into the architectural components that make Prometheus so powerful.
 
