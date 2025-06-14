@@ -119,4 +119,78 @@ curl -X DELETE "localhost:9200/test_index"
 - [Logstash Configuration Guide](https://www.elastic.co/guide/en/logstash/current/configuration.html)  
 - [Elasticsearch Index Management](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices.html)  
 
+# **Resolving Logstash "Path Not Writable" Error**
+
+## **Error Analysis**
+The error indicates Logstash can't write to its data directory (`/usr/share/logstash/data`). This is a common permission issue in Linux systems.
+
+## **Solution Steps**
+
+### **1. Verify Directory Ownership**
+```bash
+ls -ld /usr/share/logstash/data
+```
+If `logstash` doesn't own the directory, proceed to fix permissions.
+
+### **2. Fix Permissions (Choose One Method)**
+
+#### **Option A: Change Ownership to Logstash User**
+```bash
+sudo chown -R logstash:logstash /usr/share/logstash/data
+```
+
+#### **Option B: Adjust Directory Permissions**
+```bash
+sudo chmod -R 755 /usr/share/logstash/data
+```
+
+#### **Option C: Create New Data Directory**
+```bash
+sudo mkdir -p /var/lib/logstash/data
+sudo chown -R logstash:logstash /var/lib/logstash/data
+```
+Then update Logstash config:
+```bash
+sudo sed -i 's|path.data: /usr/share/logstash/data|path.data: /var/lib/logstash/data|g' /etc/logstash/logstash.yml
+```
+
+### **3. Verify the Fix**
+```bash
+sudo -u logstash touch /usr/share/logstash/data/testfile && echo "Success" || echo "Failed"
+```
+If successful, delete the test file:
+```bash
+sudo rm /usr/share/logstash/data/testfile
+```
+
+### **4. Restart Logstash**
+```bash
+sudo systemctl restart logstash
+sudo systemctl status logstash
+```
+
+## **Prevention Tips**
+1. **Default Installation**: Always use package managers (`apt/yum`) for clean installations
+2. **SELinux Systems**: If enabled, adjust context:
+   ```bash
+   sudo chcon -R -t usr_t /usr/share/logstash/data
+   ```
+3. **Custom Paths**: Document any non-default data directories in your configuration
+
+## **Troubleshooting Table**
+
+| Symptom | Command to Diagnose | Likely Fix |
+|---------|---------------------|------------|
+| Permission denied | `ls -la /usr/share/logstash` | `chown logstash:logstash` |
+| SELinux blocking | `audit2allow -a` | Adjust SELinux policy |
+| Disk full | `df -h` | Free up space |
+| Wrong path | `grep -r "path.data" /etc/logstash` | Update config |
+
+## **Next Steps**
+After resolving, retry your Logstash pipeline:
+```bash
+sudo /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/your-pipeline.conf
+```
+
+
 **Next Lab:** Visualizing Logs in Kibana.
