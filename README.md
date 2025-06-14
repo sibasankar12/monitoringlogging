@@ -1,4 +1,4 @@
-```markdown
+
 # Monitoring & Logging Projects Repository
 
 ![Grafana Dashboard Example](https://grafana.com/static/img/docs/v65/dashboard_example2.png)
