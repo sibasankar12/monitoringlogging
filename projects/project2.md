@@ -1,8 +1,8 @@
 # **Monitoring and Logging - Project 2**  
 
 
-**Course-End Project Document**  
-**Publishing Application Logs Directly to ELK Stack**  
+### **Course-End Project Document**  
+#### **Publishing Application Logs Directly to ELK Stack**  
 
 ---
 
