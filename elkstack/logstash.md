@@ -50,7 +50,7 @@ Logstash is a critical component of the **ELK Stack**, designed for data ingesti
 ### **Step 2: Test the Pipeline**  
 1. Start Logstash with the configuration file:  
    ```bash
-   /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/logstash.conf
+   sudo /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/logstash.conf
    ```  
    - Logstash will start and wait for input.  
 
